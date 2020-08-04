@@ -11,7 +11,7 @@ public class VolatiteDemo {
      *
      *  解决方法
      *   synchronized 笨重
-     *   AtomicInteger sun.misc包 unsafe类 native方法 直接操作cpu 爆炸原子性
+     *   AtomicInteger sun.misc包 unsafe类 native方法 直接操作cpu 保证原子性
      *
      */
     public static void main(String[] args) {
