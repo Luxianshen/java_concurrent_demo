@@ -1,4 +1,5 @@
 import java.util.concurrent.locks.ReentrantLock;
+import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 public class Lock {
 
@@ -18,7 +19,7 @@ public class Lock {
         //自旋锁 一直递归 直至获得锁 乐观锁 CAS
 
         //读锁 写锁 读写锁
-
+        ReentrantReadWriteLock readWriteLock = new ReentrantReadWriteLock();
 
     }
 }
