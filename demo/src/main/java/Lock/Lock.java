@@ -1,3 +1,5 @@
+package Lock;
+
 import java.util.concurrent.locks.ReentrantLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
@@ -15,7 +17,6 @@ public class Lock {
         //非公平锁 允许插队 可能会造成饥饿线程 一直被插队
         ReentrantLock lock2 = new ReentrantLock();
         //可重入锁或递归锁 synchronized 和 ReentrantLock
-
         //自旋锁 一直递归 直至获得锁 乐观锁 CAS
 
         //读锁 写锁 读写锁
