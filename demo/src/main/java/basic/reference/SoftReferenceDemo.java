@@ -1,4 +1,4 @@
-package reference;
+package basic.reference;
 
 import java.lang.ref.SoftReference;
 

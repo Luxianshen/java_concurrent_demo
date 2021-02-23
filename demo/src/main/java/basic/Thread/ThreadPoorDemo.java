@@ -1,4 +1,4 @@
-package Thread;
+package basic.Thread;
 
 import java.util.concurrent.*;
 
@@ -22,7 +22,7 @@ public class ThreadPoorDemo {
      *             3、DiscardOldestPolicy 把请求放回队列 抛弃时间最久的
      *             4、DiscardPolicy 直接丢弃
      */
-    public static void main(String[] args) {
+    public static void main1(String[] args) {
 
         /**
          * 线程池参数配置
@@ -35,8 +35,10 @@ public class ThreadPoorDemo {
                 2, 8, 1L, TimeUnit.SECONDS, new LinkedBlockingQueue<>(3),
                 Executors.defaultThreadFactory(), new ThreadPoolExecutor.DiscardPolicy());
 
+
         try {
             for (int i = 0; i < 10; i++) {
+
                 threadPoolExecutor.execute(() -> {
                     System.out.println(Thread.currentThread().getName() + "执行业务");
                 });
@@ -50,6 +52,40 @@ public class ThreadPoorDemo {
         System.out.println(Runtime.getRuntime().availableProcessors());
     }
 
+
+    /**
+     *
+     *  优先级调度系统
+     *  分5队列 按优先级排序 优先级最高5队列 1-4队列依次 解决饥饿问题
+     *  map list
+     *  权重最大的 排序 取线程数 权重= 自身的优先级 *（到达时间+等待时间 允许的最迟返回）
+     */
+    public static void main(String[] args) {
+
+        ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(
+                2, 8, 1L, TimeUnit.SECONDS, new LinkedBlockingQueue<>(3),
+                Executors.defaultThreadFactory(), new ThreadPoolExecutor.DiscardPolicy());
+
+        try {
+            for (int i = 0; i < 10; i++) {
+
+                threadPoolExecutor.execute(() -> {
+                    System.out.println(Thread.currentThread().getName() + "执行业务");
+                });
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            threadPoolExecutor.shutdown();
+        }
+
+        if(threadPoolExecutor.getActiveCount() == threadPoolExecutor.getMaximumPoolSize()){
+            //保证下一次执行 后面算权重
+            BlockingQueue<Runnable> queue = threadPoolExecutor.getQueue();
+
+        }
+
+    }
 
 }
 

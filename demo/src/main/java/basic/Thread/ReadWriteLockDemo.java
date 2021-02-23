@@ -1,4 +1,4 @@
-package Thread;
+package basic.Thread;
 
 import java.util.HashMap;
 import java.util.Map;
