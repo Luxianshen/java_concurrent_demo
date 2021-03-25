@@ -1,5 +1,7 @@
 package oom;
 
+import cn.hutool.core.util.RandomUtil;
+
 import java.util.HashMap;
 
 /**
@@ -9,15 +11,11 @@ import java.util.HashMap;
  */
 public class Test {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         System.out.println("start");
-        HashMap<Integer,Integer> map  = new HashMap(4);
-        for (int i = 1; i < 10; i++) {
-            final int a = i;
-            new Thread(()->{
-                map.put(0,a);
-            }).start();
+        while (true){
+            System.out.println(RandomUtil.randomInt(10));
+            //Thread.sleep(100);
         }
-        System.out.println("end");
     }
 }
