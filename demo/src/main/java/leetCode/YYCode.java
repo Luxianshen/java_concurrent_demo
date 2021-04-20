@@ -1,7 +1,6 @@
 package leetCode;
 
 import java.util.Arrays;
-import java.util.List;
 
 /**
  * @desc：TODO
@@ -32,7 +31,7 @@ public class YYCode {
 
 
     public static void main(String[] args) {
-        System.out.println(change(1311));
+        System.out.println(change(1316));
     }
 
     /**
@@ -46,14 +45,14 @@ public class YYCode {
         int result = 0;
         if (num > 10) {
             result += num / 10;
-            while (num >10){
+            while (num > 10) {
                 num = num % 10;
             }
         }
         for (int i = 0; i < a.length; i++) {
             if (a[i] == num) {
                 return result + 1;
-            }else if(num < a[i]){
+            } else if (num < a[i]) {
                 return result + 2;
             }
         }
