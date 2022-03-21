@@ -14,7 +14,7 @@ public class YYCode1 {
 
         int[] a = new int[]{2, 1, 5, 3, 6, 4, 8, 9, 7};
         int[] b = new int[]{1, 2, 8, 6, 4};
-        int[] c = new int[]{2, 1, 8, 6, 9,10,3,4,5,6};
+        int[] c = new int[]{2, 1, 8, 6, 9, 10, 3, 4, 5, 6};
         LIS(a);
         LIS(b);
         LIS1(c);
@@ -23,13 +23,13 @@ public class YYCode1 {
 
     public static int LIS1(int[] nums) {
 
-        if(nums.length == 0) return 0;
+        if (nums.length == 0) return 0;
         int[] dp = new int[nums.length];
         int res = 0;
         Arrays.fill(dp, 1);
-        for(int i = 0; i < nums.length; i++) {
-            for(int j = 0; j < i; j++) {
-                if(nums[j] < nums[i]) {
+        for (int i = 0; i < nums.length; i++) {
+            for (int j = 0; j < i; j++) {
+                if (nums[j] < nums[i]) {
                     dp[i] = Math.max(dp[i], dp[j] + 1);
                 }
             }
@@ -62,7 +62,7 @@ public class YYCode1 {
                     index = j;
                     now++;
                 } else {
-                    if(list.get(0) < arr[j]){
+                    if (list.get(0) < arr[j]) {
                         list.add(arr[j]);
                     }
                 }
